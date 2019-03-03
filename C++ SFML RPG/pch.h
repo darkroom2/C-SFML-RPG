@@ -13,6 +13,8 @@
 #include <iostream>
 //#include <ctime>
 //#include <cstdlib>
+#include <vector>
+#include <fstream>
 
 
 
