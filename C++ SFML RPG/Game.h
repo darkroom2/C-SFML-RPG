@@ -1,5 +1,5 @@
 #pragma once
-#include "State.h"
+#include "GameState.h"
 
 class Game {
 private:
@@ -10,8 +10,14 @@ private:
     sf::Clock dtClock;
     float dt;
 
+    std::stack<State*> states;
+
+    std::map<char, int> supportedKeys;
+
     // init funcs
     void initWindow();
+    void initStates();
+    void initKeys();
 
 public:
     Game();

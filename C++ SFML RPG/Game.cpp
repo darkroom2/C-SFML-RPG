@@ -27,15 +27,32 @@ void Game::initWindow() {
     this->window->setVerticalSyncEnabled(vsync_enabled);
 }
 
+void Game::initKeys() {
+    this->supportedKeys.emplace('W', sf::Keyboard::W);
+    this->supportedKeys.emplace('S', sf::Keyboard::S);
+    this->supportedKeys.emplace('A', sf::Keyboard::A);
+    this->supportedKeys.emplace('D', sf::Keyboard::D);
+}
+
+void Game::initStates() {
+    this->states.push(new GameState(this->window, &this->supportedKeys));
+}
+
 // constructors & destructors
 
 Game::Game() {
     this->initWindow();
+    this->initKeys();
+    this->initStates();
 }
 
 
 Game::~Game() {
     delete this->window;
+    while (!this->states.empty()) {
+        delete this->states.top();
+        this->states.pop();
+    }
 }
 
 // functions
@@ -53,18 +70,33 @@ void Game::updateSFMLEvents() {
 
 void Game::update() {
     this->updateSFMLEvents();
+
+    if (!this->states.empty()) {
+        this->states.top()->update(this->dt);
+        if (this->states.top()->getQuit()) {
+            delete this->states.top();
+            this->states.pop();
+        }
+    }
+
+    else {
+        this->window->close();
+    }
 }
 
 void Game::render() {
     this->window->clear();
     //this->window.draw(shape);
+    if (!this->states.empty()) {
+        this->states.top()->render();
+    }
     this->window->display();
 }
 
 void Game::run() {
     while (this->window->isOpen()) {
         this->updateDt();
-        this->update();
-        this->render();
+        update();
+        render();
     }
 }
