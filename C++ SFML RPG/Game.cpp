@@ -28,10 +28,24 @@ void Game::initWindow() {
 }
 
 void Game::initKeys() {
-    this->supportedKeys.emplace('W', sf::Keyboard::W);
-    this->supportedKeys.emplace('S', sf::Keyboard::S);
-    this->supportedKeys.emplace('A', sf::Keyboard::A);
-    this->supportedKeys.emplace('D', sf::Keyboard::D);
+    std::ifstream ifs("Config/supported_keys.ini");
+    if (ifs.is_open()) {
+        std::string key = "";
+        int key_value = 0;
+        while (ifs >> key >> key_value)
+            this->supportedKeys[key] = key_value;
+    }
+    ifs.close();
+    this->supportedKeys["Esc"] = sf::Keyboard::Escape;
+    this->supportedKeys["W"] = sf::Keyboard::W;
+    this->supportedKeys["S"] = sf::Keyboard::S;
+    this->supportedKeys["A"] = sf::Keyboard::A;
+    this->supportedKeys["D"] = sf::Keyboard::D;
+
+    // debug info
+    for (const auto &i : this->supportedKeys) {
+        std::cout << i.first << ", " << i.second << "\n";
+    }
 }
 
 void Game::initStates() {

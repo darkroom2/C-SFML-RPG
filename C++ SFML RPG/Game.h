@@ -12,7 +12,7 @@ private:
 
     std::stack<State*> states;
 
-    std::map<char, int> supportedKeys;
+    std::map<std::string, int> supportedKeys;
 
     // init funcs
     void initWindow();
