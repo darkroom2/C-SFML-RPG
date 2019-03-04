@@ -1,19 +1,19 @@
 #pragma once
 class Entity {
-private:
+	private:
 
-protected:
-    sf::RectangleShape shape;
-    float moveSpeed;
+	protected:
+		sf::RectangleShape shape;
+		float moveSpeed;
 
-public:
-    Entity();
-    virtual ~Entity();
+	public:
+		Entity();
+		virtual ~Entity();
 
-    // functions
-    virtual void move(const float& dt, const float x, const float y);
+		// functions
+		virtual void move(const float& dt, const float x, const float y);
 
-    virtual void update(const float& dt);
-    virtual void render(sf::RenderTarget* target);
+		virtual void update(const float& dt);
+		virtual void render(sf::RenderTarget* target);
 };
 
