@@ -36,6 +36,9 @@
     <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MainMenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -56,9 +59,18 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\window.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Config\gamestate_keybinds.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Config\supported_keys.ini">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
