@@ -9,7 +9,7 @@ void MainMenuState::initFonts() {
 }
 
 void MainMenuState::initKeybinds() {
-	std::ifstream ifs("Config/gamestate_keybinds.ini");
+	std::ifstream ifs("Config/mainmenustate_keybinds.ini");
 	if (ifs.is_open()) {
 		std::string key = "";
 		std::string key2 = "";
@@ -19,22 +19,38 @@ void MainMenuState::initKeybinds() {
 	ifs.close();
 }
 
+void MainMenuState::initButtons() {
+	this->buttons["BTN_GAME_STATE"] = new Button(100, 100, 150, 50,
+	                                             &this->font, "Start",
+	                                             sf::Color(20, 20, 20, 200),
+	                                             sf::Color(70, 70, 70, 200),
+	                                             sf::Color(150, 150, 150, 255)
+	                                            );
+	this->buttons["BTN_EXIT_STATE"] = new Button(100, 200, 150, 50,
+	                                             &this->font, "Quit",
+	                                             sf::Color(20, 20, 20, 200),
+	                                             sf::Color(70, 70, 70, 200),
+	                                             sf::Color(150, 150, 150, 255)
+	                                            );
+}
+
 MainMenuState::MainMenuState(sf::RenderWindow* window,
-                             std::map<std::string, int>* supportedKeys)
-	: State(window, supportedKeys) {
+                             std::map<std::string, int>* supportedKeys,
+                             std::stack<State*>* states
+                            )
+	: State(window, supportedKeys, states) {
 	this->initFonts();
 	this->initKeybinds();
-	this->gamestate_btn = new Button(100, 100, 150, 50,
-	                                 &this->font, "Start",
-	                                 sf::Color(20, 20, 20, 200),
-	                                 sf::Color(70, 70, 70, 200),
-	                                 sf::Color(150, 150, 150, 255)
-	                                );
+	this->initButtons();
+
 	this->background.setSize((sf::Vector2f)window->getSize());
 	this->background.setFillColor(sf::Color::Magenta);
 }
 
 MainMenuState::~MainMenuState() {
+	for (auto& i : buttons) {
+		delete i.second;
+	}
 }
 
 void MainMenuState::endState() {
@@ -48,17 +64,39 @@ void MainMenuState::updateInput(const float& dt) {
 		this->background.setFillColor(sf::Color::Yellow);
 }
 
+void MainMenuState::updateButtons() {
+	for (const auto& i : this->buttons) {
+		i.second->update(this->mousePosView);
+	}
+
+	// new game button action
+	if (this->buttons["BTN_GAME_STATE"]->isPressed()) {
+		//this->states.push(new MainMenuState(this->window, &this->supportedKeys));
+	}
+
+	// quit button action
+	if (this->buttons["BTN_EXIT_STATE"]->isPressed()) {
+		this->endState();
+		this->quit = true;
+	}
+}
+
 void MainMenuState::update(const float& dt) {
 	this->updateMousePos();
 	this->updateInput(dt);
+	this->updateButtons();
+}
 
-	this->gamestate_btn->update(this->mousePosView);
+void MainMenuState::renderButtons(sf::RenderTarget* target) {
+	for (const auto& i : this->buttons) {
+		i.second->render(target);
+	}
 }
 
 void MainMenuState::render(sf::RenderTarget* target) {
 	if (!target)
 		target = this->window;
 	target->draw(this->background);
+	this->renderButtons(target);
 
-	this->gamestate_btn->render(target);
 }
