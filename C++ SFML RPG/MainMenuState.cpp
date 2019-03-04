@@ -59,9 +59,6 @@ void MainMenuState::endState() {
 
 void MainMenuState::updateInput(const float& dt) {
 	this->checkForQuit();
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_UP"))))
-		this->background.setFillColor(sf::Color::Yellow);
 }
 
 void MainMenuState::updateButtons() {
@@ -71,7 +68,8 @@ void MainMenuState::updateButtons() {
 
 	// new game button action
 	if (this->buttons["BTN_GAME_STATE"]->isPressed()) {
-		//this->states.push(new MainMenuState(this->window, &this->supportedKeys));
+		this->states->push(new GameState(this->window, this->supportedKeys,
+		                                 this->states));
 	}
 
 	// quit button action
