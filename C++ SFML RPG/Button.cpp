@@ -28,8 +28,8 @@ Button::Button(float x, float y,
 	);
 
 	this->idleColor = idleColor;
-	this->idleColor = hoverColor;
-	this->idleColor = activeColor;
+	this->hoverColor = hoverColor;
+	this->activeColor = activeColor;
 
 	this->shape.setFillColor(this->idleColor);
 }
@@ -62,6 +62,7 @@ void Button::update(const sf::Vector2f mousePos) {
 
 		// pressed
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+			std::cout << "Left here" << "\n";
 			this->btnState = BTN_ACTIVE;
 		}
 	}

@@ -8,6 +8,9 @@ class MainMenuState :
 		// variables
 		sf::RectangleShape background;
 		sf::Font font;
+
+		Button* gamestate_btn;
+
 		// functions
 		void initFonts();
 		void initKeybinds();
