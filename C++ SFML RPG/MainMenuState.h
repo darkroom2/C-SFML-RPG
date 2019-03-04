@@ -1,15 +1,20 @@
 #pragma once
 #include "State.h"
+#include "Button.h"
+
 class MainMenuState :
 	public State {
 	private:
 		// variables
 		sf::RectangleShape background;
+		sf::Font font;
 		// functions
+		void initFonts();
 		void initKeybinds();
 
 	public:
-		MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
+		MainMenuState(sf::RenderWindow* window,
+		              std::map<std::string, int>* supportedKeys);
 		virtual ~MainMenuState();
 
 

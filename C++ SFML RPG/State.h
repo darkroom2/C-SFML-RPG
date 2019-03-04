@@ -9,6 +9,10 @@ class State {
 
 		bool quit;
 
+		sf::Vector2i mousePosScreen;
+		sf::Vector2i mousePosWindow;
+		sf::Vector2f mousePosView;
+
 		// resources
 		std::vector<sf::Texture> textures;
 
@@ -22,6 +26,8 @@ class State {
 		const bool& getQuit() const;
 
 		virtual void checkForQuit();
+
+		virtual void updateMousePos();
 
 		virtual void endState() = 0;
 		virtual void updateInput(const float& dt) = 0;

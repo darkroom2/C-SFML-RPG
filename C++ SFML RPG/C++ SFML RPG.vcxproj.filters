@@ -19,6 +19,9 @@
     <Filter Include="Entities">
       <UniqueIdentifier>{be92e98c-7eff-4360-a29a-0f8fe6183080}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{ce3c0a2f-1991-42a2-9ba3-e0232b2346aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -38,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="MainMenuState.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -62,16 +68,19 @@
     <ClCompile Include="MainMenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\window.ini">
-      <Filter>Resource Files</Filter>
+      <Filter>Config</Filter>
     </None>
     <None Include="Config\gamestate_keybinds.ini">
-      <Filter>Resource Files</Filter>
+      <Filter>Config</Filter>
     </None>
     <None Include="Config\supported_keys.ini">
-      <Filter>Resource Files</Filter>
+      <Filter>Config</Filter>
     </None>
   </ItemGroup>
 </Project>
