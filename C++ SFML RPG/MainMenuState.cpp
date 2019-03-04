@@ -22,7 +22,7 @@ void MainMenuState::initBackground() {
 
 void MainMenuState::initFonts() {
 	if (!this->font.loadFromFile("Resources/Fonts/CenturyGothic.ttf")) {
-		std::cout << "Error font" << "\n";
+		std::cout << "ERROR::MAINMENUSTATE::COULD NOT LOAD FONT" << "\n";
 		throw("ERROR::MAINMENUSTATE::COULD NOT LOAD FONT");
 	}
 }
@@ -77,12 +77,10 @@ MainMenuState::~MainMenuState() {
 	}
 }
 
-void MainMenuState::endState() {
-	std::cout << "ending MainMenuState" << "\n";
-}
+
 
 void MainMenuState::updateInput(const float& dt) {
-	this->checkForQuit();
+	//this->checkForQuit();
 }
 
 void MainMenuState::updateButtons() {
@@ -99,7 +97,6 @@ void MainMenuState::updateButtons() {
 	// quit button action
 	if (this->buttons["BTN_EXIT_STATE"]->isPressed()) {
 		this->endState();
-		this->quit = true;
 	}
 }
 

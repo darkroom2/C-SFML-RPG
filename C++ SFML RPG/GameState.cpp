@@ -25,21 +25,24 @@ GameState::GameState(sf::RenderWindow* window,
 GameState::~GameState() {
 }
 
-void GameState::endState() {
-	std::cout << "ending GameState" << "\n";
-}
 
 void GameState::updateInput(const float& dt) {
-	this->checkForQuit();
+	//this->checkForQuit();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_UP"))))
 		this->player.move(dt, 0.f, -1.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_DOWN"))))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(
+	                                   this->keyBinds.at("MOVE_DOWN"))))
 		this->player.move(dt, 0.f, 1.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_LEFT"))))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(
+	                                   this->keyBinds.at("MOVE_LEFT"))))
 		this->player.move(dt, -1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_RIGHT"))))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(
+	                                   this->keyBinds.at("MOVE_RIGHT"))))
 		this->player.move(dt, 1.f, 0.f);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("CLOSE"))))
+		this->endState();
 }
 
 void GameState::update(const float& dt) {

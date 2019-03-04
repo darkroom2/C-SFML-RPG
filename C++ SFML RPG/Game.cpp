@@ -63,9 +63,9 @@ void Game::initKeys() {
 	this->supportedKeys["D"] = sf::Keyboard::D;
 
 	// debug info
-	for (const auto& i : this->supportedKeys) {
+	/*for (const auto& i : this->supportedKeys) {
 		std::cout << i.first << ", " << i.second << "\n";
-	}
+	}*/
 }
 
 void Game::initStates() {
