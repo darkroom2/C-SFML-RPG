@@ -3,6 +3,7 @@
 
 // std
 #include <iostream>
+#include <sstream>
 //#include <ctime>
 //#include <cstdlib>
 #include <vector>

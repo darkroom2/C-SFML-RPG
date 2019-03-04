@@ -5,7 +5,7 @@
 Entity::Entity() {
 	this->shape.setSize(sf::Vector2f(50.f, 50.f));
 	this->shape.setFillColor(sf::Color::White);
-	this->moveSpeed = 50.f;
+	this->moveSpeed = 350.f;
 }
 
 
