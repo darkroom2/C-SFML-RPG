@@ -7,6 +7,7 @@ void Player::initVariables() {
 }
 
 void Player::initComponents() {
+	this->createMoveComp(200.f);
 }
 
 //ctor dtor

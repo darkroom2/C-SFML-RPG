@@ -1,4 +1,6 @@
 #pragma once
+#include "MovementComponent.h"
+
 class Entity {
 	private:
 		void initVariables();
@@ -6,7 +8,7 @@ class Entity {
 		sf::Texture* texture;
 		sf::Sprite* sprite;
 
-		float moveSpeed;
+		MovementComponent* moveComp;
 
 	public:
 		Entity();
@@ -14,6 +16,7 @@ class Entity {
 
 		// component functions
 		void createSprite(sf::Texture* texture);
+		void createMoveComp(const float maxVelocity);
 
 		// functions
 		virtual void setPosition(const float x, const float y);
