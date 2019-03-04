@@ -16,6 +16,7 @@ class Entity {
 		void createSprite(sf::Texture* texture);
 
 		// functions
+		virtual void setPosition(const float x, const float y);
 		virtual void move(const float& dt, const float x, const float y);
 
 		virtual void update(const float& dt);

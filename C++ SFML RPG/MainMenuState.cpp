@@ -14,7 +14,7 @@ void MainMenuState::initVariables() {
 void MainMenuState::initBackground() {
 	this->background.setSize((sf::Vector2f)this->window->getSize());
 	if (!this->bgTexture.loadFromFile("Resources/Images/Backgrounds/bg1.png")) {
-		std::cout << "ERROR::MAINMENUSTATE::FAILED TO LOAD TEXTURE" << "\n";
+		std::cout << "ERROR::MAINMENUSTATE::FAILED TO LOAD TEXTURE\n";
 		throw("ERROR::MAINMENUSTATE::FAILED TO LOAD TEXTURE");
 	}
 	this->background.setTexture(&this->bgTexture);
@@ -22,7 +22,7 @@ void MainMenuState::initBackground() {
 
 void MainMenuState::initFonts() {
 	if (!this->font.loadFromFile("Resources/Fonts/CenturyGothic.ttf")) {
-		std::cout << "ERROR::MAINMENUSTATE::COULD NOT LOAD FONT" << "\n";
+		std::cout << "ERROR::MAINMENUSTATE::COULD NOT LOAD FONT\n";
 		throw("ERROR::MAINMENUSTATE::COULD NOT LOAD FONT");
 	}
 }

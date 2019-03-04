@@ -1,4 +1,6 @@
 #pragma once
+#include "Player.h"
+
 class State {
 	private:
 
@@ -15,7 +17,7 @@ class State {
 		sf::Vector2f mousePosView;
 
 		// resources
-		std::vector<sf::Texture> textures;
+		std::map<std::string, sf::Texture> textures;
 
 		// functions
 		virtual void initKeybinds() = 0;

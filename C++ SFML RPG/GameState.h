@@ -1,13 +1,15 @@
 #pragma once
 #include "State.h"
-#include "Entity.h"
+
 class GameState :
 	public State {
 	private:
-		Entity player;
+		Player* player;
 
 		// functions
 		void initKeybinds();
+		void initTextures();
+		void initPlayers();
 
 	public:
 		GameState(sf::RenderWindow* window,
